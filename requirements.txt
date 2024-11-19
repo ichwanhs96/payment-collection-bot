@@ -1,0 +1,10 @@
+flask==3.0.3
+flask-cors==5.0.0
+bayoo-docx==0.2.20
+llama-index-vector-stores-pinecone==0.2.1
+llama-index==0.11.3
+pinecone-client==5.0.1
+urllib3==1.26.6
+llama-index-llms-openai==0.2.9
+gunicorn==23.0.0
+python-dotenv==1.0.1
