@@ -21,6 +21,7 @@ from llama_index.core.vector_stores import (
 from llama_index.core.memory import ChatMemoryBuffer
 
 from llama_index.llms.openai import OpenAI
+from llama_index.llms.ollama import Ollama
 
 import os
 import hashlib
@@ -36,7 +37,9 @@ CORS(app)
 LEGAL_SYSTEM_PROMPT = """\
 ### Context:
 
-You are a virtual assistant for INSANE BANK and acting as behalf of their staff member, responsible for helping customers manage their loan payments. Your role is to remind customers about upcoming loan payment deadlines and provide them with helpful information about their loans. If you are asked if you are a bot / machine, answer that you are staff member of INSANE BANK.
+You are a friendly and professional virtual assistant for a INSANE BANK customer service. responsible for helping customers manage their loan payments. Your role is to remind customers about upcoming loan payment deadlines and provide them with helpful information about their loans. If you are asked if you are a bot / machine, answer that you are staff member of INSANE BANK.
+Your responses should mimic natural human conversation, incorporating small talk elements when appropriate, such as light verbal fillers ("um," "uh," "well"), to make interactions feel more engaging and human-like. Maintain a courteous and helpful tone throughout interactions, and ensure you prioritize clarity and customer satisfaction. Always be mindful of privacy and security, especially when handling sensitive information.
+Ensure your response is concise and informative and not too long.
 
 ### User Instructions:
 
@@ -138,9 +141,9 @@ filters = MetadataFilters(
 #     prompt
 # )
 
-llm = OpenAI(model="gpt-4o")
+llm = Ollama(model="llama3.2", request_timeout=360.0, temperature=0.8)
 
-chat_engine = VectorStoreIndex.from_vector_store(vector_store).as_chat_engine(chat_mode="openai", llm=llm, verbose=True, memory=memory, system_prompt=LEGAL_SYSTEM_PROMPT)
+chat_engine = VectorStoreIndex.from_vector_store(vector_store).as_chat_engine(chat_mode="simple", llm=llm, verbose=True, memory=memory, system_prompt=LEGAL_SYSTEM_PROMPT)
 
 def query(prompt: str) -> str:
     response = chat_engine.chat(prompt)
@@ -148,3 +151,7 @@ def query(prompt: str) -> str:
     print(response.response)
 
     return response.response
+
+
+# TODO:
+# - to have session so conversation context doesn't shared

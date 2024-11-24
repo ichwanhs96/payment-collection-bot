@@ -1,2 +1,4 @@
 .env
 venv
+# Ignore all __pycache__ folders
+__pycache__/
