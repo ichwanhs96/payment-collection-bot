@@ -5,7 +5,8 @@ import uuid  # Import the uuid module
 import logging  # Import the logging module
 
 # static testing url for now
-url = 'https://a66e-111-108-27-62.ngrok-free.app'
+# url = 'https://a66e-111-108-27-62.ngrok-free.app'
+url = 'http://127.0.0.1:5000'
 url = f'{url}/prompt'
 
 # for debugging, uncomment line below

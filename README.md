@@ -70,5 +70,12 @@ To run the Flask application, use the following command:
 flask run
 ```
 
+## Running the Chat Application
+
+To run the Streamlit application, use the following command:
+```bash
+streamlit run chat.py
+```
+
 ## License
 TBD
