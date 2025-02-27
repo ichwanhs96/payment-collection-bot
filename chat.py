@@ -6,7 +6,7 @@ import logging  # Import the logging module
 
 # static testing url for now
 # url = 'https://a66e-111-108-27-62.ngrok-free.app'
-url = 'https://6d33-111-108-27-62.ngrok-free.app'
+url = 'https://bf20-111-108-27-62.ngrok-free.app'
 url = f'{url}/prompt'
 
 # for debugging, uncomment line below
